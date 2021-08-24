@@ -13,7 +13,7 @@ public class Builder
         string assetFolderPath = Application.dataPath;
         string pcFileName = assetFolderPath + "/../Builds/pc/MyGame.exe";
         string webFileName = assetFolderPath + "/../Builds/web/";
-        string androidFileName = assetFolderPath + "/../Builds/android";
+        string androidFileName = assetFolderPath + "/../Builds/android/MyGame.apk";
 
         var scenes = EditorBuildSettings.scenes;
         var levels = scenes.Select(z => z.path).ToArray();
