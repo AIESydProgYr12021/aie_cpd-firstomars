@@ -148,17 +148,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73669947}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.64586, y: 0.64586, z: 0.64586}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 150765268}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 50, y: 50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &73669949
 MonoBehaviour:
@@ -226,7 +226,7 @@ RectTransform:
   m_GameObject: {fileID: 150765267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6971, y: 1.6971, z: 1.6971}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 73669948}
   m_Father: {fileID: 1306615704}
@@ -234,7 +234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 146, y: 114}
+  m_AnchoredPosition: {x: 90, y: 75}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &150765269
@@ -246,26 +246,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 150765267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b66be29070c0d948865e9d09d88e0d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 62821f4f2c4d8534f95c369f064d7270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   joystickVisualDistance: 25
-  OnJoystickMove:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1913083388}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: JoystickMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  showVirtualControls: 1
+  showControl: 1
+  syncWithInput: 1
 --- !u!114 &150765270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,7 +417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8479399374427563346, guid: 0d64b1f2772de6240aae516fac9e7175, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8479399374427563346, guid: 0d64b1f2772de6240aae516fac9e7175, type: 3}
       propertyPath: m_LocalPosition.y
@@ -451,11 +437,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8479399374427563346, guid: 0d64b1f2772de6240aae516fac9e7175, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8479399374427563346, guid: 0d64b1f2772de6240aae516fac9e7175, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8479399374427563346, guid: 0d64b1f2772de6240aae516fac9e7175, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -827,10 +813,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1913083387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a597757dd7b562b4592f2d9f97d2ce8c, type: 3}
+  m_Script: {fileID: 11500000, guid: f6e1cdd2f00e73048b63e40e2cf90c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  joystick: {fileID: 150765267}
+--- !u!65 &1913083389
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913083387}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1913083392
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -842,8 +842,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
