@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 namespace SandBox.Staging.Player
 {
-    public class DEMO2VirtualJoystick : MonoBehaviour
+    public class DEMO2VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
     {
         [SerializeField] private float joystickVisualDistance = 50;
         private Image container;
