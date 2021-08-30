@@ -11,11 +11,14 @@ namespace SandBox.Staging.Player
         [SerializeField] float turnSmoothTime = 0.1f;
         private float turnSmoothVelocity;
 
-
         [SerializeField] Transform cam;
         [SerializeField] GameObject joystick;
         private DEMO2VirtualJoystick joystickController;
         private Rigidbody rb;
+
+        //private Vector3 moveDir; -- TO DELETE replaced by PlayerMoveDirection
+        public Vector3 PlayerMoveDirection { get; private set; }
+
 
         // Start is called before the first frame update
         void Start()
@@ -28,32 +31,6 @@ namespace SandBox.Staging.Player
         void Update()
         {
             
-            //THIRD PERSON CAMERA - NOT LOCKED
-
-            /*
-            Vector3 direction = new Vector3(joystickController.Direction.x, 0, joystickController.Direction.y);
-
-            //move / rotate player only when there is player input
-            if (direction.x != 0 || direction.z != 0)
-            {
-                //find angle of turn
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-                
-                //smooth turn
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                
-                //rotate player
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-
-                //move player
-                rb.MovePosition(transform.position + moveDir.normalized * speed * Time.deltaTime);
-                //rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
-                //rb.AddForce(direction);
-            }
-            */
-
             //THIRD PERSON CAMERA - LOCKED
             Vector3 direction = new Vector3(joystickController.Direction.x, 0, joystickController.Direction.y);
 
@@ -69,10 +46,10 @@ namespace SandBox.Staging.Player
                 //rotate player
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                PlayerMoveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
                 //move player
-                rb.MovePosition(transform.position + moveDir.normalized * speed * Time.deltaTime);
+                rb.MovePosition(transform.position + PlayerMoveDirection.normalized * speed * Time.deltaTime);
                 //rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
                 //rb.AddForce(direction);
             }
@@ -81,3 +58,27 @@ namespace SandBox.Staging.Player
     }
 }
 
+//THIRD PERSON CAMERA - NOT LOCKED
+/*
+Vector3 direction = new Vector3(joystickController.Direction.x, 0, joystickController.Direction.y);
+
+//move / rotate player only when there is player input
+if (direction.x != 0 || direction.z != 0)
+{
+    //find angle of turn
+    float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+
+    //smooth turn
+    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+
+    //rotate player
+    transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+    Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+    //move player
+    rb.MovePosition(transform.position + moveDir.normalized * speed * Time.deltaTime);
+    //rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
+    //rb.AddForce(direction);
+}
+*/

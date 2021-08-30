@@ -11,11 +11,14 @@ namespace SandBox.Staging.Player
         [SerializeField] private float joystickVisualDistance = 50;
         private Image container;
         private Image joystick;
+        
         public Vector2 Direction { get; private set; }
+        public bool isAimJoystick = false;
         public bool showControl = true;
         private bool isControllsShowing = true;
         public bool syncWithInput = true;
         private bool isDragging = false;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -33,7 +36,12 @@ namespace SandBox.Staging.Player
             }
             if (syncWithInput && !isDragging)
             {
-                Direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                if (isAimJoystick)
+                {
+                    Direction = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));        //use mouse X Y
+                }
+                else Direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));    //use keyboard WASD
+
                 joystick.rectTransform.anchoredPosition = new Vector3(Direction.x * joystickVisualDistance, Direction.y * joystickVisualDistance, 0);
             }
         }
@@ -60,8 +68,11 @@ namespace SandBox.Staging.Player
             pos.y += pivot.y - 0.5f;
             pos.x = Mathf.Clamp(pos.x, -1, 1);
             pos.y = Mathf.Clamp(pos.y, -1, 1);
+            
             Direction = pos;
             joystick.rectTransform.anchoredPosition = new Vector3(pos.x * joystickVisualDistance, pos.y * joystickVisualDistance, 0);
         }
     }
+
+    //Direction = new Vector2(Input.GetAxis("AimJoystickX"), Input.GetAxis("AimJoystickY"));        //use joystick
 }
