@@ -27,11 +27,14 @@ namespace SandBox.Staging.Enemy
 
         //attacking
         public float timeBetweenAttacks;
-        bool alreadyAttacked;
+        bool alreadyAttacked = false;
+        Vector3 startingAttackPos;
 
         //states
         public float sightRange, attackRange;
         public bool playerInSightRange, playerInAttackRange;
+
+
 
         private void Awake()
         {
@@ -49,12 +52,12 @@ namespace SandBox.Staging.Enemy
 
             if (!playerInSightRange && !playerInAttackRange) Patrolling();
             else if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-            else if (playerInAttackRange) AttackPlayer();
-            else
-            {
-                anim.SetBool("isWalking", false);
-                anim.SetBool("isChasing", false);
-            }
+            else if (playerInSightRange && playerInAttackRange) AttackPlayer();
+            //else if (!playerInSightRange && !playerInAttackRange)
+            //{
+            //    anim.SetBool("isWalking", false);
+            //    anim.SetBool("isChasing", false);
+            //}
         }
 
         private void Patrolling()
@@ -97,25 +100,30 @@ namespace SandBox.Staging.Enemy
 
         private void AttackPlayer()
         {
-            anim.SetBool("isChasing", false);
+            Vector3 vectorCheck = new Vector3(0, 0, 0);
+            startingAttackPos = new Vector3( 0, 0, 0 );
 
+            //only get starting attack pos once
+            if(startingAttackPos == vectorCheck) startingAttackPos = transform.position;
+            
             //stop enemy moving before attacking
             agent.SetDestination(transform.position);
-
-            Vector3 startingAttackPos = transform.position;
-
             transform.LookAt(player);
-        
+
             if (!alreadyAttacked)
             {
                 //attack code here
+                anim.SetBool("isAttacking", true);
+                anim.SetBool("isChasing", false);
 
-                //rb.AddForce(transform.forward * attackBump);
-                //transform.Translate(Vector3.forward * 10f * Time.deltaTime);
+                //float distDebug = 0;
+                float distDebug = Vector3.Distance(transform.position, player.position); 
 
-                if (Vector3.Distance(transform.position, player.position) < 0.5f)
+                if (Vector3.Distance(transform.position, player.position) < 2f)
                 {
                     alreadyAttacked = true;
+
+                    anim.SetBool("isWaitingForAttack", true);
 
                     agent.SetDestination(startingAttackPos); //move to reset attack
                     Invoke(nameof(ResetAttack), timeBetweenAttacks); //resets attack in X secs
@@ -126,6 +134,7 @@ namespace SandBox.Staging.Enemy
         private void ResetAttack()
         {
             alreadyAttacked = false;
+            anim.SetBool("isWaitingForAttack", false);
         }
 
         //health / damage

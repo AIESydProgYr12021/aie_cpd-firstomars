@@ -213,7 +213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477614477}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.71, y: 1, z: -14.84}
+  m_LocalPosition: {x: -6.71, y: 1, z: -9.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -293,6 +293,14 @@ PrefabInstance:
     - target: {fileID: 155659788, guid: 044338d35e3d65f4687a7c2a38ad2fbe, type: 3}
       propertyPath: sightRange
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 155659788, guid: 044338d35e3d65f4687a7c2a38ad2fbe, type: 3}
+      propertyPath: attackRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 155659788, guid: 044338d35e3d65f4687a7c2a38ad2fbe, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2768846599086475769, guid: 044338d35e3d65f4687a7c2a38ad2fbe, type: 3}
       propertyPath: m_RootOrder
