@@ -303,7 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 815353763711374992}
   m_Layer: 0
-  m_Name: PREFAB_PlayerStagingScene
+  m_Name: PREFAB_StagingScene_OLD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
