@@ -25,6 +25,10 @@ namespace SandBox.Staging.Enemy
         bool walkPointSet;
         public float walkPointRange;
 
+        //chase
+        Vector3 chasePoint;
+
+
         //attacking
         public float timeBetweenAttacks;
         bool alreadyAttacked = false;
@@ -34,14 +38,14 @@ namespace SandBox.Staging.Enemy
         public float sightRange, attackRange;
         public bool playerInSightRange, playerInAttackRange;
 
-
-
         private void Awake()
         {
-            player = GameObject.Find("PlayerTemp").transform;
+            player = GameObject.Find("Player").transform;
             agent = GetComponent<NavMeshAgent>();
             rb = GetComponent<Rigidbody>();
             anim = GetComponentInChildren<Animator>();
+
+            startingAttackPos = new Vector3(0, 0, 0);
         }
 
         private void Update()
@@ -63,7 +67,9 @@ namespace SandBox.Staging.Enemy
         private void Patrolling()
         {
             anim.SetBool("isWalking", true);
-            
+            anim.SetBool("isChasing", false);
+            anim.SetBool("isAttacking", false);
+
             if (!walkPointSet)  
                 SearchWalkPoint();
 
@@ -92,13 +98,122 @@ namespace SandBox.Staging.Enemy
 
         private void ChasePlayer()
         {
+            rb.velocity = Vector3.zero;
+
             anim.SetBool("isChasing", true);
             anim.SetBool("isWalking", false);
+            anim.SetBool("isAttacking", false);
 
-            agent.SetDestination(player.position);
+            chasePoint = player.position;
+
+            //agent.SetDestination(player.position);
+            agent.SetDestination(chasePoint);
+        }
+
+        private void AttackPlayerV3()
+        {
+            //no longer chasing
+            anim.SetBool("isChasing", false);
+            anim.SetBool("isAttacking", true);
+
+            Vector3 vectorCheck = new Vector3(0, 0, 0);
+
+            //only get starting attack pos once
+            if (startingAttackPos == vectorCheck) startingAttackPos = transform.position;
+
+            //stop enemy moving before attacking
+            agent.SetDestination(startingAttackPos);
+            transform.LookAt(player);
+
+            if (!alreadyAttacked)
+            {
+                rb.AddForce(transform.forward * 10f, ForceMode.Impulse);
+                                
+                alreadyAttacked = true;
+
+                //agent.SetDestination(startingAttackPos); //move to reset attack
+                Invoke(nameof(ResetAttack), timeBetweenAttacks); //resets attack in X secs
+            }
         }
 
         private void AttackPlayer()
+        {
+            //no longer chasing
+            anim.SetBool("isChasing", false);
+
+            Vector3 vectorCheck = new Vector3(0, 0, 0);
+
+            //only get starting attack pos once
+            if (startingAttackPos == vectorCheck) startingAttackPos = transform.position;
+
+            //stop enemy moving before attacking
+            agent.SetDestination(startingAttackPos);
+            transform.LookAt(player);
+
+            if (!alreadyAttacked)
+            {
+                anim.SetBool("isAttacking", true);
+                alreadyAttacked = true;
+
+                Invoke(nameof(ResetAttack), timeBetweenAttacks); //resets attack in X secs
+            }
+        }
+
+
+        //TO DELETE
+        private void AttackPlayerV2()
+        {
+            //no longer chasing
+            anim.SetBool("isChasing", false);
+
+
+            Vector3 vectorCheck = new Vector3(0, 0, 0);
+
+            //only get starting attack pos once
+            if (startingAttackPos == vectorCheck) startingAttackPos = transform.position;
+
+            //stop enemy moving before attacking
+            agent.SetDestination(startingAttackPos);
+            transform.LookAt(player);
+
+            if(!alreadyAttacked)
+            {
+                anim.SetBool("isAttacking", true);
+                anim.SetBool("isWaitingForAttack", false);
+
+                alreadyAttacked = true;
+
+                anim.SetBool("isWaitingForAttack", true);
+
+                agent.SetDestination(startingAttackPos); //move to reset attack
+                Invoke(nameof(ResetAttack), timeBetweenAttacks); //resets attack in X secs
+            }
+           
+            //if (Vector3.Distance(transform.position, player.position) < 1.5f)
+            //{
+            //    alreadyAttacked = true;
+
+            //    anim.SetBool("isWaitingForAttack", true);
+
+            //    agent.SetDestination(startingAttackPos); //move to reset attack
+            //    Invoke(nameof(ResetAttack), timeBetweenAttacks); //resets attack in X secs
+            //}
+
+
+            //if (Vector3.Distance(transform.position, player.position) < 1.5f)
+            //{
+            //    alreadyAttacked = true;
+
+            //    anim.SetBool("isWaitingForAttack", true);
+
+            //    agent.SetDestination(startingAttackPos); //move to reset attack
+            //    Invoke(nameof(ResetAttack), timeBetweenAttacks); //resets attack in X secs
+            //}
+
+
+        }
+        //TO DELETE
+        private void AttackPlayerV1()
         {
             Vector3 vectorCheck = new Vector3(0, 0, 0);
             startingAttackPos = new Vector3( 0, 0, 0 );
@@ -107,7 +222,8 @@ namespace SandBox.Staging.Enemy
             if(startingAttackPos == vectorCheck) startingAttackPos = transform.position;
             
             //stop enemy moving before attacking
-            agent.SetDestination(transform.position);
+            //agent.SetDestination(transform.position);
+            agent.SetDestination(startingAttackPos);
             transform.LookAt(player);
 
             if (!alreadyAttacked)
@@ -134,7 +250,7 @@ namespace SandBox.Staging.Enemy
         private void ResetAttack()
         {
             alreadyAttacked = false;
-            anim.SetBool("isWaitingForAttack", false);
+            //anim.SetBool("isWaitingForAttack", false);
         }
 
         //health / damage
@@ -148,6 +264,8 @@ namespace SandBox.Staging.Enemy
             Gizmos.DrawWireSphere(transform.position, sightRange);
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(transform.position, walkPoint);
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position, chasePoint);
         }
     }
 }
