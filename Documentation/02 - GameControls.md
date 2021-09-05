@@ -1,11 +1,31 @@
 # PC - Keyboard / Mouse
-describe controls / inputs
 
+### WASD
+- movement forward and back
+- Strafe left and right
+
+### MOUSE
+- Aim / Look
+- Left click - shoot
 
 # Controller
-describe controls / inputs
 
+### LEFT JOYSTICK
+- movement forward and back
+- Strafe left and right
+
+### RIGHT JOYSTICK
+- Aim / Look
+
+### RIGHT SHOULDER BUTTON
+- Shoot
 
 # Mobile / Touch
-describe controls / inputs
+### LEFT JOYSTICK (visual)
+- movement forward and back
+- Strafe left and right
+
+### RIGHT JOYSTICK (visual)
+- Aim / Look
+- Tap to shoot
 
