@@ -24,30 +24,31 @@ Casual gamers who like:
 - Quirky games
 
 ## Reference
-- ### Borderlands 
+### Borderlands 
 -   [similarities] casual-ish FPS, quirky
 -   [differences] much shorter, level is a lot smaller, less weapons/GOs/enemies, less difficult, not multiplayer
 
-- Battlefield Heroes (https://www.youtube.com/watch?v=OxnY6kz1xTc)
+### Battlefield Heroes 
+-   https://www.youtube.com/watch?v=OxnY6kz1xTc
 -   [similarities] low poly, third person, shooter
 -   [differences] less weapons / enemies, not multiplayer, smaller level 
 
-- Animal Crossing
+### Animal Crossing
 -   [similarities] low poly, cute-sy
 -   [differences] much more violent
 
 ## Player experience and game POV 
 
-- Who is the player? 
+Who is the player? 
 -   Jenny, an office worker from the city who's come back to the suburbs to visit her parents
-- What is the setting? 
+What is the setting? 
 -   Easy
-- What is the fantasy the game grants the player? 
+What is the fantasy the game grants the player? 
 -   Killing suburb-dwellers with no consequences
-- What emotions do you want the player to feel? 
+What emotions do you want the player to feel? 
 -   Torn between amusement / shock
 -   Curiosity as to how they could create more havoc
-- What are the major phases of the player’s experience in the game?  
+What are the major phases of the player’s experience in the game?  
 -   Acclimatising to controls
 -   Exploration of level
 -   Increasing levels of chaos as more enemies spawn
