@@ -429,7 +429,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_FontSize: 13
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -440,7 +440,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Happy Campers
+  m_Text: Life in the Suburbs
 --- !u!222 &1130304254
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -733,6 +733,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1922254255}
+    - target: {fileID: 8764421997885098573, guid: a607966d94dcff345bbc2bf898eebfb6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayerEnemyStaging
+      objectReference: {fileID: 0}
     - target: {fileID: 8764421998199501644, guid: a607966d94dcff345bbc2bf898eebfb6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -848,6 +852,10 @@ PrefabInstance:
     - target: {fileID: 8764421998641649983, guid: a607966d94dcff345bbc2bf898eebfb6, type: 3}
       propertyPath: m_Name
       value: Btn_MenuOrganiser
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764421998685187112, guid: a607966d94dcff345bbc2bf898eebfb6, type: 3}
+      propertyPath: m_Text
+      value: Staging-Player/Eney
       objectReference: {fileID: 0}
     - target: {fileID: 8764421999292770168, guid: a607966d94dcff345bbc2bf898eebfb6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

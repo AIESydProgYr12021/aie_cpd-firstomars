@@ -77,6 +77,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(5);
     }
 
+    public void PlayerEnemyStaging()
+    {
+        Debug.Log("Player/Enemy Staging scene loaded.");
+        SceneManager.LoadScene(6);
+    }
+
     public void Quit()
     {
         Application.Quit();

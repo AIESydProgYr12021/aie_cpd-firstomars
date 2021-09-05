@@ -31,7 +31,7 @@ namespace SandBox.Staging.Player
             cc = GetComponent<CharacterController>();
             joystickController = joystick.GetComponent<DEMO2VirtualJoystick>();
 
-            anim = GetComponentInChildren<Animator>();
+            //anim = GetComponentInChildren<Animator>();
 
         }
 
@@ -45,7 +45,7 @@ namespace SandBox.Staging.Player
             //move / rotate player only when there is player input
             if (direction.x != 0 || direction.z != 0)
             {
-                anim.SetBool("isWalking", true);
+                //anim.SetBool("isWalking", true);
                 
                 //find angle of turn
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -65,7 +65,7 @@ namespace SandBox.Staging.Player
                 cc.Move(PlayerMoveDirection.normalized * speed * Time.deltaTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-                Debug.Log(PlayerMoveDirection.normalized);
+                //Debug.Log(PlayerMoveDirection.normalized);
 
 
                 //rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
@@ -73,7 +73,7 @@ namespace SandBox.Staging.Player
             }
             else
             {
-                anim.SetBool("isWalking", false);
+                //anim.SetBool("isWalking", false);
             }
 
         }
