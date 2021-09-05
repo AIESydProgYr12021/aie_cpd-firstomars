@@ -24,7 +24,7 @@ Casual gamers who like:
 - Quirky games
 
 ## Reference
-- Borderlands 
+- ### Borderlands 
 -   [similarities] casual-ish FPS, quirky
 -   [differences] much shorter, level is a lot smaller, less weapons/GOs/enemies, less difficult, not multiplayer
 
