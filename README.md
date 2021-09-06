@@ -1,15 +1,19 @@
-# PROJECT NAME
+# PROJECT NAME: Life in the Suburbs
 
-## About the Game
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+## Concept statement  
 
+THE STORY
+Jenny reluctantly books a trip to her parents’ place for an obligatory family visit. 
+What she was expecting to be a boring and uneventful weekend back home takes a turn when she discovers the suburban locals have come to resent tourists from the big city...
+
+FIGHT TO SURVIVE
+Playing as Jenny, you’re forced to defend yourself from hordes of suburban hillbillies. You find a pistol tucked away in the garage of your parents’ place - lucky! 
+Survive for a weekend in the suburbs, as the locals take up swords, guns and their fists to chase her out of town.
 ### Contributors:
 Contributors to the project are strictly limated to AIE Students as part of their group work project.
 
 Members (example):
- - John Doe: designer
- - John Smith: programmer
- - Sandra Dee: artist
+ - Omar Samad: programmer
 
 
 ## Build Steps:
