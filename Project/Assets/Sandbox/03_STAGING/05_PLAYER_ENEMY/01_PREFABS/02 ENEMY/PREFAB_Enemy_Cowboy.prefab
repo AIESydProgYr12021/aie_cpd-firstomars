@@ -10,7 +10,7 @@ Animator:
   m_GameObject: {fileID: 2841869294511879708}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8bb8f27f191f3ca43847826dbaadc595, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3545843b83b69634a8e4647a6640fc89, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -19,6 +19,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2026518016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2841869294511879708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2363641f88729aa4895260abb918b99f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &6127713138735389228
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 155659787}
   player: {fileID: 0}
-  playerObject: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 128
@@ -99,9 +111,9 @@ MonoBehaviour:
     m_Bits: 256
   health: 50
   maxVelocityWhenShot: 20
-  walkPoint: {x: 0, y: 0, z: 0}
+  walkPoint: {x: -10, y: 0, z: 10}
   walkPointRange: 10
-  attackDamage: 0
+  attackDamage: 20
   timeBetweenAttacks: 1
   sightRange: 15
   attackRange: 3

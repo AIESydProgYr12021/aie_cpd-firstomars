@@ -45,4 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splashScreenLoad: 2
   playerHealth: {fileID: 0}
-  playerScore: {fileID: 0}
+  waveNum: {fileID: 0}

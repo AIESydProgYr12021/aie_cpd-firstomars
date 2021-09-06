@@ -17,7 +17,6 @@ namespace SandBox.Staging.PlayerEnemy
         [SerializeField] int health;
         [SerializeField] float maxVelocityWhenShot;
 
-
         //animation
         private Rigidbody rb;
         private Animator anim;
@@ -40,6 +39,7 @@ namespace SandBox.Staging.PlayerEnemy
         //states
         public float sightRange, attackRange;
         public bool playerInSightRange, playerInAttackRange;
+        Vector3 sightPoint;
 
         private void Awake()
         {
@@ -51,15 +51,23 @@ namespace SandBox.Staging.PlayerEnemy
 
         private void Update()
         {
+            
+            //sightPoint = new Vector3(transform.position.x, transform.position.y, transform.forward.z + sightRange);
+
+            sightPoint = transform.forward * sightRange;
+
             if (gameObject != null)
             {
                 //check for sight and attack range
                 playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
                 playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
+                //bool canSeePlayer = Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, sightRange);
+                //if (canSeePlayer) canSeePlayer = hitInfo.collider.gameObject.CompareTag("Player");
+
                 //behaviour
                 if (!playerInSightRange && !playerInAttackRange) Patrolling();
-                else if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+                else if (playerInSightRange && !playerInAttackRange) ChasePlayer(); //&& canSeePlayer
                 else if (playerInSightRange && playerInAttackRange) AttackPlayer();
             }
 
@@ -185,6 +193,11 @@ namespace SandBox.Staging.PlayerEnemy
             Gizmos.DrawWireSphere(transform.position, attackRange);
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, sightRange);
+
+            //bool canSeePlayer = Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, sightRange);
+
+            Gizmos.color = Color.black;
+            Gizmos.DrawLine(transform.position, sightPoint);
 
             if (!playerInSightRange && !playerInAttackRange)
             {

@@ -193,4 +193,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.16666667
+    functionName: DamagePlayer
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 2363641f88729aa4895260abb918b99f, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

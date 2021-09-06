@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 869853458272788122}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 869853458635928851}
   - component: {fileID: 869853458635928849}
   - component: {fileID: 869853458635928848}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterPistol_01_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,9 +122,9 @@ GameObject:
   - component: {fileID: 869853458690397803}
   - component: {fileID: 869853458690397799}
   - component: {fileID: 869853458690397798}
-  - component: {fileID: 869853458690397801}
   - component: {fileID: 869853458690397800}
-  m_Layer: 0
+  - component: {fileID: 95271555}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -196,21 +196,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &869853458690397801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869853458690397802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10cd02db32ced974fb07acb69220bced, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 869853458272788125}
-  vfx:
-  - {fileID: 5659742090850589029, guid: 49740e8e06202a54aa8ee29303604876, type: 3}
 --- !u!95 &869853458690397800
 Animator:
   serializedVersion: 3
@@ -230,6 +215,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &95271555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869853458690397802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15af33f400c21ee45b8b29cfce5b2557, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 869853458272788125}
+  vfx:
+  - {fileID: 5659742090850589029, guid: c393992df1d24834e8fd26cc9ee0fcfe, type: 3}
 --- !u!1 &869853459004766537
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,9 +242,9 @@ GameObject:
   - component: {fileID: 869853459004766533}
   - component: {fileID: 869853459004766532}
   - component: {fileID: 869853459004766535}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Weapon_Pistol
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -336,9 +336,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 869853459954108803}
-  - component: {fileID: 869853459954108802}
   - component: {fileID: 869853459954108805}
-  m_Layer: 0
+  - component: {fileID: 726457222}
+  m_Layer: 8
   m_Name: PLAYER_OBJECT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,22 +360,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &869853459954108802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869853459954108807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e1cdd2f00e73048b63e40e2cf90c09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  turnSmoothTime: 0.1
-  cam: {fileID: 0}
-  joystick: {fileID: 0}
 --- !u!143 &869853459954108805
 CharacterController:
   m_ObjectHideFlags: 0
@@ -394,3 +378,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &726457222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869853459954108807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c31443c8af7f5047b41d46ebad03f0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 1000
+  gameManager: {fileID: 0}
+  speed: 10
+  turnSmoothTime: 0.1
+  cam: {fileID: 0}
+  joystick: {fileID: 0}
