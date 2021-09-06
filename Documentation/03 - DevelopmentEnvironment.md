@@ -1,7 +1,10 @@
 # Development Environment
 
 ## Game Engine
-describe the game engine your using, version, required features to be installed.
+### Unity
+- Version 2020.3.15f2
+- Android Build Support / Universal Windows Platform Build Support / WebGL Build Support / Windows Build Support(IL2CPP)
+- Cinemachine
 
 ## Software and tools
 
@@ -14,19 +17,24 @@ describe the game engine your using, version, required features to be installed.
 ## 3rd party libraries / assets
 
 ---
-Asset Name: `insert name here`
+Asset Name: POLYGON Starter Pack - Low Poly 3D Art by Synty
 
-URL: `unsert link to asset`
+URL: https://assetstore.unity.com/packages/3d/props/polygon-starter-pack-low-poly-3d-art-by-synty-156819
 
-Reason for use: describe what this asset is used for
+Reason for use:
+- Character models
+- Environment
+- Obstacles
+- Materials
 
 ---
 
-Asset Name: `insert name here`
+Asset Name: NavMeshComponents
 
-URL: `unsert link to asset`
+URL: https://github.com/Unity-Technologies/NavMeshComponents
 
-Reason for use: describe what this asset is used for
+Reason for use: 
+- NavMesh used for enemy AI to navigate around scene / find player
 
 ---
 
