@@ -12,12 +12,11 @@ namespace SandBox.Staging.PlayerEnemy
 
         [SerializeField] float splashScreenLoad = 2.0f;
         [SerializeField] Text playerHealth;
-        [SerializeField] Text playerScore;
-
+        [SerializeField] Text waveNum;
 
         private void Start()
         {
-
+            UpdateWaveNumber();
         }
 
         private void Update()
@@ -35,17 +34,20 @@ namespace SandBox.Staging.PlayerEnemy
             if (Input.GetKeyDown("m"))
             {
                 SceneManager.LoadScene(1);
-                //promptMenu.SetActive(true);
             }
-
-            //if( Input.GetKeyDown("M") &&
-            //    SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(0) &&
-            //    SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(1))
-            //{
-            //    SceneManager.LoadScene(1);
-            //    //promptMenu.SetActive(true);
-            //}
         }
+
+
+        public void UpdatePlayerHealth(int currentHealth)
+        {
+            playerHealth.text = currentHealth.ToString();
+        }
+
+        private void UpdateWaveNumber()
+        {
+            waveNum.text = "Wave 1";
+        }
+
 
         public void SplashScene()
         {

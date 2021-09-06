@@ -8,7 +8,9 @@ namespace SandBox.Staging.PlayerEnemy
     {
         //health
         [SerializeField] int playerHealth;
-        
+        [SerializeField] GameObject gameManager;
+        private GameManager gameManagerController;
+
         //movement
         [SerializeField] float speed = 2.0f;
         [SerializeField] float turnSmoothTime = 0.1f;
@@ -29,6 +31,9 @@ namespace SandBox.Staging.PlayerEnemy
             cc = GetComponent<CharacterController>();
             joystickController = joystick.GetComponent<VirtualJoystickController_V2>();
             anim = GetComponentInChildren<Animator>();
+
+            gameManagerController = gameManager.GetComponent<GameManager>();
+            gameManagerController.UpdatePlayerHealth(playerHealth);
         }
 
         // Update is called once per frame
@@ -67,6 +72,12 @@ namespace SandBox.Staging.PlayerEnemy
         public void AttackedByEnemy(int attackDamage)
         {
             playerHealth -= attackDamage;
+            gameManagerController.UpdatePlayerHealth(playerHealth);
+        }
+
+        public int GetPlayerHealth()
+        {
+            return playerHealth;
         }
     }
 }

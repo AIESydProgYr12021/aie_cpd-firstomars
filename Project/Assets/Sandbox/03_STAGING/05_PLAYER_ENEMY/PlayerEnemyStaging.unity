@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 48603098}
   - component: {fileID: 48603097}
   m_Layer: 5
-  m_Name: Txt-Kills
+  m_Name: Txt-Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Kills
+  m_Text: Wave No.
 --- !u!222 &48603098
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -507,6 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 1000
+  gameManager: {fileID: 1800531620}
   speed: 10
   turnSmoothTime: 0.1
   cam: {fileID: 1127006789}
@@ -608,7 +609,7 @@ GameObject:
   - component: {fileID: 1016105863}
   - component: {fileID: 1016105862}
   m_Layer: 5
-  m_Name: Canvas - Text
+  m_Name: Canvas_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -842,6 +843,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8606442783494170934, guid: 7171bd8fdc8256f41b81bc27af79ed7d, type: 3}
+      propertyPath: waveNum
+      value: 
+      objectReference: {fileID: 48603097}
+    - target: {fileID: 8606442783494170934, guid: 7171bd8fdc8256f41b81bc27af79ed7d, type: 3}
+      propertyPath: playerScore
+      value: 
+      objectReference: {fileID: 48603097}
+    - target: {fileID: 8606442783494170934, guid: 7171bd8fdc8256f41b81bc27af79ed7d, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 786842955}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7171bd8fdc8256f41b81bc27af79ed7d, type: 3}
 --- !u!4 &1127006789 stripped
@@ -964,6 +977,11 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 869853458272788125, guid: 77e80aca705e60245a429acf4c5eab94, type: 3}
   m_PrefabInstance: {fileID: 1029498355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1800531620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4934820105687027436, guid: 7171bd8fdc8256f41b81bc27af79ed7d, type: 3}
+  m_PrefabInstance: {fileID: 1089377075}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2067650468
 PrefabInstance:

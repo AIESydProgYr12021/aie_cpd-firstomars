@@ -11,8 +11,6 @@ namespace SandBox.Staging.PlayerEnemy
         //in the game to allow it to navigate the Scene using the NavMesh
         public NavMeshAgent agent; 
         public Transform player;
-        public GameObject playerObject;
-        private PlayerController_V2 playerController;
         public LayerMask whatIsGround, whatIsPlayer;
 
         //take damage
@@ -33,11 +31,11 @@ namespace SandBox.Staging.PlayerEnemy
         Vector3 chasePoint;
 
         //attacking
-        [SerializeField] int attackDamage;
+        public int attackDamage;
         public float timeBetweenAttacks;
         bool alreadyAttacked = false;
         float timeCheck = 0;
-
+        
 
         //states
         public float sightRange, attackRange;
@@ -45,11 +43,7 @@ namespace SandBox.Staging.PlayerEnemy
 
         private void Awake()
         {
-            player = GameObject.Find("Player").transform;
-            
-            //playerController = player.GetComponent<PlayerController_V2>();
-            playerController = playerObject.GetComponent<PlayerController_V2>();
-
+            player = GameObject.Find("Player").transform; // necessary
             agent = GetComponent<NavMeshAgent>();
             rb = GetComponent<Rigidbody>();
             anim = GetComponentInChildren<Animator>();
@@ -172,11 +166,11 @@ namespace SandBox.Staging.PlayerEnemy
             }
         }
 
-        public void DamagePlayer()
-        {
-            playerController.AttackedByEnemy(attackDamage);
-            Debug.Log("player attacked");
-        }
+        //public void DamagePlayer()
+        //{
+        //    playerController.AttackedByEnemy(attackDamage);
+        //    Debug.Log("player attacked");
+        //}
 
         private void ResetAttack()
         {
