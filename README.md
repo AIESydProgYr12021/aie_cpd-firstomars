@@ -13,7 +13,7 @@ Survive for a weekend in the suburbs, as the locals take up swords, guns and the
 Contributors to the project are strictly limated to AIE Students as part of their group work project.
 
 Members (example):
- - Omar Samad: programmer
+ - Omar - programmer
 
 
 ## Build Steps:
