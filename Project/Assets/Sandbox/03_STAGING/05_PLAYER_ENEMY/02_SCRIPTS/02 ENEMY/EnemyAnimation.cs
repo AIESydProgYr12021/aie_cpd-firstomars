@@ -6,7 +6,7 @@ namespace SandBox.Staging.PlayerEnemy
 {
     public class EnemyAnimation : MonoBehaviour
     {
-        public GameObject player;
+        [SerializeField] GameObject player;
         private PlayerController_V2 playerController;
         private int attackDamage;
 
@@ -15,6 +15,9 @@ namespace SandBox.Staging.PlayerEnemy
         {
             playerController = player.GetComponent<PlayerController_V2>();
             attackDamage = GetComponentInParent<EnemyController>().attackDamage;
+
+            //DELETE - DIDN'T WORK
+            //playerController = GetComponentInParent<EnemyController>().player.gameObject.GetComponent<PlayerController_V2>();
         }
 
         public void DamagePlayer()

@@ -2,6 +2,7 @@
 //using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 namespace SandBox.Staging.PlayerEnemy
 {
@@ -14,7 +15,10 @@ namespace SandBox.Staging.PlayerEnemy
         public LayerMask whatIsGround, whatIsPlayer;
 
         //take damage
-        [SerializeField] int health;
+        [SerializeField] float maxHealth;
+        [SerializeField] float health;
+        [SerializeField] GameObject healthBarUI;
+        [SerializeField] Slider healthSlider;
         [SerializeField] float maxVelocityWhenShot;
 
         //animation
@@ -47,11 +51,17 @@ namespace SandBox.Staging.PlayerEnemy
             agent = GetComponent<NavMeshAgent>();
             rb = GetComponent<Rigidbody>();
             anim = GetComponentInChildren<Animator>();
+            
+            //health
+            health = maxHealth;
+            healthSlider.value = CalculateHealth();
+            healthBarUI.SetActive(false);
         }
+
 
         private void Update()
         {
-            
+
             //sightPoint = new Vector3(transform.position.x, transform.position.y, transform.forward.z + sightRange);
 
             sightPoint = transform.forward * sightRange;
@@ -71,8 +81,32 @@ namespace SandBox.Staging.PlayerEnemy
                 else if (playerInSightRange && playerInAttackRange) AttackPlayer();
             }
 
+            CheckHealth();
+        }
+
+        private void CheckHealth()
+        {
+            if (health < maxHealth)
+            {
+                healthBarUI.SetActive(true);
+                healthBarUI.transform.LookAt(player);
+            }
+
+            if (health > maxHealth)
+            {
+                health = maxHealth;
+            }
+
+            healthSlider.value = CalculateHealth();
+
             if (health <= 0) Destroy(gameObject);
         }
+
+        private float CalculateHealth()
+        {
+            return health / maxHealth;
+        }
+
 
         private void OnCollisionEnter(Collision collision)
         {

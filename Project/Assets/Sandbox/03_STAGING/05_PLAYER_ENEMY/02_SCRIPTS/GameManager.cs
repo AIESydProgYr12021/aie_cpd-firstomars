@@ -11,7 +11,7 @@ namespace SandBox.Staging.PlayerEnemy
         //[SerializeField] GameObject promptMenu;
 
         [SerializeField] float splashScreenLoad = 2.0f;
-        [SerializeField] Text playerHealth;
+        //[SerializeField] Text playerHealth;
         [SerializeField] Text waveNum;
 
         private void Start()
@@ -38,10 +38,10 @@ namespace SandBox.Staging.PlayerEnemy
         }
 
 
-        public void UpdatePlayerHealth(int currentHealth)
-        {
-            playerHealth.text = currentHealth.ToString();
-        }
+        //public void UpdatePlayerHealth(int currentHealth)
+        //{
+        //    playerHealth.text = currentHealth.ToString();
+        //}
 
         private void UpdateWaveNumber()
         {

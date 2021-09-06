@@ -1,17 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SandBox.Staging.PlayerEnemy
 {
     public class PlayerController_V2 : MonoBehaviour
     {
-        //health
-        [SerializeField] int playerHealth;
-        [SerializeField] GameObject gameManager;
+        [Header("GameManager")]
+        [SerializeField] GameObject gameManager; //to trigger game over
         private GameManager gameManagerController;
 
+        //health
+        [Header("Health")]
+        [SerializeField] float maxPlayerHealth;
+        [SerializeField] float playerHealth;
+        //[SerializeField] GameObject healthBarUI;
+        [SerializeField] Slider healthSlider;
+
+        
         //movement
+        [Header("Movement")]
         [SerializeField] float speed = 2.0f;
         [SerializeField] float turnSmoothTime = 0.1f;
         private float turnSmoothVelocity;
@@ -33,7 +42,14 @@ namespace SandBox.Staging.PlayerEnemy
             anim = GetComponentInChildren<Animator>();
 
             gameManagerController = gameManager.GetComponent<GameManager>();
-            gameManagerController.UpdatePlayerHealth(playerHealth);
+
+            playerHealth = maxPlayerHealth;
+            healthSlider.value = CalculateHealth();
+        }
+
+        private float CalculateHealth()
+        {
+            return playerHealth / maxPlayerHealth;
         }
 
         // Update is called once per frame
@@ -53,9 +69,6 @@ namespace SandBox.Staging.PlayerEnemy
                 //smooth turn
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, cam.eulerAngles.y, ref turnSmoothVelocity, turnSmoothTime);
 
-                //rotate player
-                //transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
                 PlayerMoveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
                 cc.Move(PlayerMoveDirection.normalized * speed * Time.deltaTime);
@@ -72,12 +85,8 @@ namespace SandBox.Staging.PlayerEnemy
         public void AttackedByEnemy(int attackDamage)
         {
             playerHealth -= attackDamage;
-            gameManagerController.UpdatePlayerHealth(playerHealth);
-        }
-
-        public int GetPlayerHealth()
-        {
-            return playerHealth;
+            healthSlider.value = CalculateHealth();
+            //gameManagerController.UpdatePlayerHealth(playerHealth);
         }
     }
 }
