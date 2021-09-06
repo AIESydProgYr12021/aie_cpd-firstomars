@@ -15,8 +15,10 @@ namespace SandBox.Staging.PlayerEnemy
         private PlayerController_V2 playerController;
         public LayerMask whatIsGround, whatIsPlayer;
 
-        //health
+        //take damage
         [SerializeField] int health;
+        [SerializeField] float maxVelocityWhenShot;
+
 
         //animation
         private Rigidbody rb;
@@ -74,17 +76,29 @@ namespace SandBox.Staging.PlayerEnemy
         {
             if(collision.gameObject.name == "PREFAB_Projectile(Clone)")
             {
+                //if(rb.velocity.magnitude > maxVelocityWhenShot)
+                //{
+                //    rb.velocity = rb.velocity.normalized * maxVelocityWhenShot;
+                //}
+                
                 
                 //push back enemy when hit by bullet
-                GameObject bullet = collision.gameObject;
-                Vector3 collisionDir = (bullet.transform.position - transform.position).normalized;
-                transform.position -= collisionDir * 10;
+                //GameObject bullet = collision.gameObject;
+                //Vector3 collisionDir = (bullet.transform.position - transform.position).normalized;
+                //transform.position -= collisionDir * 10;
                 
                 Debug.Log("bullet hit enemy");
 
                 //reduce enemy health when hit by bullet
                 health -= 10;
+
+                Invoke("SetVelocityToZero", 1);
             }
+        }
+
+        private void SetVelocityToZero()
+        {
+            rb.velocity = Vector3.zero;
         }
 
         private void Patrolling()
@@ -144,9 +158,6 @@ namespace SandBox.Staging.PlayerEnemy
             {
                 anim.SetBool("isAttacking", true);
                 alreadyAttacked = true;
-
-                playerController.AttackedByEnemy(attackDamage);
-                Debug.Log("player attacked");
             }
             else
             {
@@ -159,6 +170,12 @@ namespace SandBox.Staging.PlayerEnemy
                 }
                 else if (timeCheck >= 2.0f) ResetAttack();
             }
+        }
+
+        public void DamagePlayer()
+        {
+            playerController.AttackedByEnemy(attackDamage);
+            Debug.Log("player attacked");
         }
 
         private void ResetAttack()

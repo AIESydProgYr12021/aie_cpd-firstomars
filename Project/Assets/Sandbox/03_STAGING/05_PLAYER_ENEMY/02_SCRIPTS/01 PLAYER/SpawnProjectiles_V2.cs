@@ -37,9 +37,7 @@ namespace SandBox.Staging.PlayerEnemy
             if (firePoint != null)
             {
                 vfx = Instantiate(effectToSpawn, firePoint.transform.position, Quaternion.identity);
-
                 vfx.transform.localRotation = GetPlayerRotation();
-                //vfx.transform.localRotation = testplayerMoveDir;
             }
             else
             {
@@ -52,8 +50,6 @@ namespace SandBox.Staging.PlayerEnemy
             playerMoveDir = GetComponentInParent<PlayerController_V2>().PlayerMoveDirection;
 
             return testplayerMoveDir = GetComponentInParent<Transform>().rotation;
-
-            //return testplayerMoveDir = Quaternion.LookRotation(playerMoveDir);
         }
     }
 }

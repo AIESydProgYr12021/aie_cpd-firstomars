@@ -4989,8 +4989,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.3, y: 0.3, z: 1}
+  m_Center: {x: 0, y: 0, z: 0.24}
 --- !u!54 &2167575387547557710
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4999,14 +4999,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5659742090850589029}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &7234846509953431330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5019,7 +5019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9071a2b692746344972dc04302d73f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
   fireRate: 5
   muzzlePrefab: {fileID: 3380232836278277810, guid: 40754b11a636614448bfef791c3363ba, type: 3}
   hitPrefab: {fileID: 989328328085023312, guid: ce17ac3144f0f2c45b87cf1377893bd5, type: 3}

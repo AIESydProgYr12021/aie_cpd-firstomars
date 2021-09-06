@@ -90,15 +90,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 155659787}
   player: {fileID: 0}
+  playerObject: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 128
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  attackBump: 10
+  health: 50
+  maxVelocityWhenShot: 20
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 10
+  attackDamage: 0
   timeBetweenAttacks: 1
   sightRange: 15
   attackRange: 3
@@ -119,7 +122,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &155659791
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -130,7 +133,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.75
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
