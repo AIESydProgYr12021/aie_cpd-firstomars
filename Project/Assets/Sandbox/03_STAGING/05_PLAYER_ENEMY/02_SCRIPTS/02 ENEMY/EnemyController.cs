@@ -8,13 +8,18 @@ namespace SandBox.Staging.PlayerEnemy
 {
     public class EnemyController : MonoBehaviour
     {
+        [SerializeField] GameObject gameManagerObj;
+        private GameManager gameManager;
+        
         //This component is attached to a mobile character 
         //in the game to allow it to navigate the Scene using the NavMesh
+        [Header("NavMesh")]
         public NavMeshAgent agent; 
         public Transform player;
         public LayerMask whatIsGround, whatIsPlayer;
 
         //take damage
+        [Header("Health")]
         [SerializeField] float maxHealth;
         [SerializeField] float health;
         [SerializeField] GameObject healthBarUI;
@@ -22,32 +27,36 @@ namespace SandBox.Staging.PlayerEnemy
         [SerializeField] float maxVelocityWhenShot;
 
         //animation
+        [Header("Animation")]
         private Rigidbody rb;
         private Animator anim;
 
         //patrol
+        [Header("Walk")]
         public Vector3 walkPoint;
         bool walkPointSet;
         public float walkPointRange;
 
         //chase
+        [Header("Chase")]
+        [SerializeField] Transform rayStart;
+        [SerializeField] Transform rayEnd;
         Vector3 chasePoint;
 
         //attacking
+        [Header("Attack")]
         public int attackDamage;
         public float timeBetweenAttacks;
         bool alreadyAttacked = false;
         float timeCheck = 0;
-        
-
-        //states
-        public float sightRange, attackRange;
-        public bool playerInSightRange, playerInAttackRange;
-        Vector3 sightPoint;
+        public float attackRange; //sightRange, 
+        public bool playerInAttackRange; //playerInSightRange
+        //Vector3? sightPoint = null; //no longer need
 
         private void Awake()
         {
-            player = GameObject.Find("Player").transform; // necessary
+            gameManager = gameManagerObj.GetComponent<GameManager>();
+            player = GameObject.Find("Player").transform; // necessary?
             agent = GetComponent<NavMeshAgent>();
             rb = GetComponent<Rigidbody>();
             anim = GetComponentInChildren<Animator>();
@@ -61,27 +70,33 @@ namespace SandBox.Staging.PlayerEnemy
 
         private void Update()
         {
-
-            //sightPoint = new Vector3(transform.position.x, transform.position.y, transform.forward.z + sightRange);
-
-            sightPoint = transform.forward * sightRange;
-
             if (gameObject != null)
             {
                 //check for sight and attack range
-                playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+                //playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
                 playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-                //bool canSeePlayer = Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, sightRange);
-                //if (canSeePlayer) canSeePlayer = hitInfo.collider.gameObject.CompareTag("Player");
-
-                //behaviour
-                if (!playerInSightRange && !playerInAttackRange) Patrolling();
-                else if (playerInSightRange && !playerInAttackRange) ChasePlayer(); //&& canSeePlayer
-                else if (playerInSightRange && playerInAttackRange) AttackPlayer();
+                if (CanSeePlayer() && !playerInAttackRange) ChasePlayer();
+                else if (CanSeePlayer() && playerInAttackRange) AttackPlayer();
+                else Patrolling();
             }
 
             CheckHealth();
+        }
+        private bool CanSeePlayer()
+        {
+            if(rayEnd != null)
+            {
+                Vector3 dir = (rayEnd.position - rayStart.position).normalized;
+                var hit = Physics.Raycast(rayStart.position, dir, out RaycastHit hitInfo, 50);
+
+                if (hit) // && hitInfo.collider.gameObject.CompareTag("Player")
+                {
+                    return hitInfo.collider.gameObject.CompareTag("Player");
+                }
+            }
+            
+            return false;
         }
 
         private void CheckHealth()
@@ -99,7 +114,11 @@ namespace SandBox.Staging.PlayerEnemy
 
             healthSlider.value = CalculateHealth();
 
-            if (health <= 0) Destroy(gameObject);
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+                gameManager.EnemyKilled();
+            }
         }
 
         private float CalculateHealth()
@@ -112,23 +131,12 @@ namespace SandBox.Staging.PlayerEnemy
         {
             if(collision.gameObject.name == "PREFAB_Projectile(Clone)")
             {
-                //if(rb.velocity.magnitude > maxVelocityWhenShot)
-                //{
-                //    rb.velocity = rb.velocity.normalized * maxVelocityWhenShot;
-                //}
-                
-                
-                //push back enemy when hit by bullet
-                //GameObject bullet = collision.gameObject;
-                //Vector3 collisionDir = (bullet.transform.position - transform.position).normalized;
-                //transform.position -= collisionDir * 10;
-                
                 Debug.Log("bullet hit enemy");
 
                 //reduce enemy health when hit by bullet
                 health -= 10;
 
-                Invoke("SetVelocityToZero", 1);
+                Invoke("SetVelocityToZero", 0.5f);
             }
         }
 
@@ -208,12 +216,6 @@ namespace SandBox.Staging.PlayerEnemy
             }
         }
 
-        //public void DamagePlayer()
-        //{
-        //    playerController.AttackedByEnemy(attackDamage);
-        //    Debug.Log("player attacked");
-        //}
-
         private void ResetAttack()
         {
             alreadyAttacked = false;
@@ -223,25 +225,24 @@ namespace SandBox.Staging.PlayerEnemy
 
         private void OnDrawGizmosSelected()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, attackRange);
+            //attack radius
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, sightRange);
+            Gizmos.DrawWireSphere(transform.position, attackRange);
 
-            //bool canSeePlayer = Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, sightRange);
+            //sight radius
+            //Gizmos.color = Color.yellow;
+            //Gizmos.DrawWireSphere(transform.position, sightRange);
 
-            Gizmos.color = Color.black;
-            Gizmos.DrawLine(transform.position, sightPoint);
+            //is player in sight
+            if (CanSeePlayer()) Gizmos.color = Color.red;
+            else                Gizmos.color = Color.black;
+            Gizmos.DrawLine(rayStart.position, rayEnd.position);
 
-            if (!playerInSightRange && !playerInAttackRange)
+            //walkpoint
+            if (!CanSeePlayer() && !playerInAttackRange)
             {
                 Gizmos.color = Color.blue;
                 Gizmos.DrawLine(transform.position, walkPoint);
-            }
-            else if (playerInSightRange && !playerInAttackRange)
-            {
-                Gizmos.color = Color.green;
-                Gizmos.DrawLine(transform.position, chasePoint);
             }
         }
     }

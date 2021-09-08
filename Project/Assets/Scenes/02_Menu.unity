@@ -855,12 +855,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8764421998685187112, guid: a607966d94dcff345bbc2bf898eebfb6, type: 3}
       propertyPath: m_Text
-      value: Staging-Player/Enemy
+      value: 'Staging: 1 PLAYER / 1 ENEMY'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764421998808704601, guid: a607966d94dcff345bbc2bf898eebfb6, type: 3}
+      propertyPath: m_Text
+      value: 'Staging: ENEMY WAVES (1)'
       objectReference: {fileID: 0}
     - target: {fileID: 8764421999292770168, guid: a607966d94dcff345bbc2bf898eebfb6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1922254255}
+    - target: {fileID: 8764421999292770168, guid: a607966d94dcff345bbc2bf898eebfb6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EnemyWaveStaging
+      objectReference: {fileID: 0}
     - target: {fileID: 8764421999292770171, guid: a607966d94dcff345bbc2bf898eebfb6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -3,88 +3,97 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+namespace Temp.PlayGame
 {
-    //[SerializeField] GameObject promptMenu;
-
-    [SerializeField] float splashScreenLoad = 2.0f;
-
-    private void Start()
+    public class GameManager : MonoBehaviour
     {
+        //[SerializeField] GameObject promptMenu;
 
-    }
+        [SerializeField] float splashScreenLoad = 2.0f;
 
-    private void Update()
-    {
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+        private void Start()
         {
-            splashScreenLoad -= Time.deltaTime;
 
-            if (splashScreenLoad <= 0)
+        }
+
+        private void Update()
+        {
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0))
+            {
+                splashScreenLoad -= Time.deltaTime;
+
+                if (splashScreenLoad <= 0)
+                {
+                    SceneManager.LoadScene(1);
+                }
+            }
+
+            if (Input.GetKeyDown("m"))
             {
                 SceneManager.LoadScene(1);
+                //promptMenu.SetActive(true);
             }
+
+            //if( Input.GetKeyDown("M") &&
+            //    SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(0) &&
+            //    SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(1))
+            //{
+            //    SceneManager.LoadScene(1);
+            //    //promptMenu.SetActive(true);
+            //}
         }
 
-        if (Input.GetKeyDown("m"))
+        public void SplashScene()
         {
-            SceneManager.LoadScene(1);
-            //promptMenu.SetActive(true);
+            Debug.Log("Splash scene loaded.");
+            SceneManager.LoadScene(0);
         }
 
-        //if( Input.GetKeyDown("M") &&
-        //    SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(0) &&
-        //    SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(1))
-        //{
-        //    SceneManager.LoadScene(1);
-        //    //promptMenu.SetActive(true);
-        //}
-    }
+        public void MenuScene()
+        {
+            Debug.Log("Menu scene loaded.");
+            SceneManager.LoadScene(1);
+        }
 
-    public void SplashScene()
-    {
-        Debug.Log("Splash scene loaded.");
-        SceneManager.LoadScene(0);
-    }
+        public void StagingScene()
+        {
+            Debug.Log("Staging scene loaded.");
+            SceneManager.LoadScene(2);
+        }
 
-    public void MenuScene()
-    {
-        Debug.Log("Menu scene loaded.");
-        SceneManager.LoadScene(1);
-    }
+        public void PlayGameScene()
+        {
+            Debug.Log("Play game scene loaded.");
+            SceneManager.LoadScene(3);
+        }
 
-    public void StagingScene()
-    {
-        Debug.Log("Staging scene loaded.");
-        SceneManager.LoadScene(2);
-    }
+        public void GameOverScene()
+        {
+            Debug.Log("Game over scene loaded.");
+            SceneManager.LoadScene(4);
+        }
 
-    public void PlayGameScene()
-    {
-        Debug.Log("Play game scene loaded.");
-        SceneManager.LoadScene(3);
-    }
+        public void CreditsScene()
+        {
+            Debug.Log("Credits scene loaded.");
+            SceneManager.LoadScene(5);
+        }
 
-    public void GameOverScene()
-    {
-        Debug.Log("Game over scene loaded.");
-        SceneManager.LoadScene(4);
-    }
+        public void PlayerEnemyStaging()
+        {
+            Debug.Log("Player/Enemy Staging scene loaded.");
+            SceneManager.LoadScene(6);
+        }
 
-    public void CreditsScene()
-    {
-        Debug.Log("Credits scene loaded.");
-        SceneManager.LoadScene(5);
-    }
+        public void EnemyWaveStaging()
+        {
+            Debug.Log("EnemyWave Staging scene loaded.");
+            SceneManager.LoadScene(7);
+        }
 
-    public void PlayerEnemyStaging()
-    {
-        Debug.Log("Player/Enemy Staging scene loaded.");
-        SceneManager.LoadScene(6);
-    }
-
-    public void Quit()
-    {
-        Application.Quit();
+        public void Quit()
+        {
+            Application.Quit();
+        }
     }
 }

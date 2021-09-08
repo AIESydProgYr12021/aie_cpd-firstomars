@@ -8,16 +8,14 @@ namespace SandBox.Staging.PlayerEnemy
     public class PlayerController_V2 : MonoBehaviour
     {
         [Header("GameManager")]
-        [SerializeField] GameObject gameManager; //to trigger game over
+        [SerializeField] GameObject gameManager;
         private GameManager gameManagerController;
 
         //health
         [Header("Health")]
         [SerializeField] float maxPlayerHealth;
         [SerializeField] float playerHealth;
-        //[SerializeField] GameObject healthBarUI;
         [SerializeField] Slider healthSlider;
-
         
         //movement
         [Header("Movement")]
@@ -79,7 +77,11 @@ namespace SandBox.Staging.PlayerEnemy
                 anim.SetBool("isWalking", false);
             }
 
-            if (playerHealth <= 0) Destroy(gameObject);
+            if (playerHealth <= 0)
+            {
+                gameManagerController.LosePrompt();
+                Destroy(gameObject);
+            }
         }
 
         public void AttackedByEnemy(int attackDamage)

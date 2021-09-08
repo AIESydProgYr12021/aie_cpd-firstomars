@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Sandbox/03_STAGING/05_PLAYER_ENEMY/PlayerEnemyStaging.unity
     guid: 059e9eb38f5be5848a997667778e36b1
+  - enabled: 1
+    path: Assets/Sandbox/03_STAGING/06_ENEMYWAVES/EnemyWavesStaging.unity
+    guid: a99109b7077af8d4d8ef049a6dbbc512
   m_configObjects: {}

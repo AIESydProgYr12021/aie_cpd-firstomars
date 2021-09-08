@@ -8,15 +8,29 @@ namespace SandBox.Staging.PlayerEnemy
 {
     public class GameManager : MonoBehaviour
     {
-        //[SerializeField] GameObject promptMenu;
-
         [SerializeField] float splashScreenLoad = 2.0f;
-        //[SerializeField] Text playerHealth;
+
+        [Header("UI")]
         [SerializeField] Text waveNum;
+        [SerializeField] GameObject promptCanvas;
+        [SerializeField] GameObject losePrompt;
+        [SerializeField] GameObject winPrompt;
+
+        [Header("EnemyWaves")]
+        [SerializeField] int numOfWaves;
+        [SerializeField] int numOfEnemies;
+
+
 
         private void Start()
         {
             UpdateWaveNumber();
+            promptCanvas.SetActive(false);
+            losePrompt.SetActive(false);
+            winPrompt.SetActive(false);
+
+            numOfWaves = 1;
+            numOfEnemies = 1;
         }
 
         private void Update()
@@ -35,19 +49,34 @@ namespace SandBox.Staging.PlayerEnemy
             {
                 SceneManager.LoadScene(1);
             }
+
+            if(numOfWaves <= 0)
+            {
+                promptCanvas.SetActive(true);
+                winPrompt.SetActive(true);
+            }
+
         }
 
-
-        //public void UpdatePlayerHealth(int currentHealth)
-        //{
-        //    playerHealth.text = currentHealth.ToString();
-        //}
+        public void EnemyKilled()
+        {
+            numOfEnemies--;
+            if(numOfEnemies <= 0)
+            {
+                numOfWaves--;
+            }
+        }
 
         private void UpdateWaveNumber()
         {
             waveNum.text = "Wave 1";
         }
 
+        public void LosePrompt()
+        {
+            promptCanvas.SetActive(true);
+            losePrompt.SetActive(true);
+        }
 
         public void SplashScene()
         {

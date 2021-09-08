@@ -4,18 +4,29 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
+    [SerializeField] Transform enemyPrefab;
+
+    [SerializeField] float timeBetweenEnemyWaves = 5f;
+    private float countdown = 2f;
+
     [SerializeField] int numberOfWaves;
-    [SerializeField] List<Vector3> spawnPoints;    
-    
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] List<Vector3> spawnPoints;
+
+    private void Update()
     {
-        
+        if (countdown <= 0f)
+        {
+            SpawnWave();
+            countdown = timeBetweenEnemyWaves;
+        }
+
+        // time that has passed since last time we passed a frame
+        countdown -= Time.deltaTime; 
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SpawnWave()
     {
-        
+        Debug.Log("Wave incoming");
     }
+
 }

@@ -44,5 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splashScreenLoad: 2
-  playerHealth: {fileID: 0}
   waveNum: {fileID: 0}
+  promptCanvas: {fileID: 0}
+  losePrompt: {fileID: 0}
+  winPrompt: {fileID: 0}
+  numOfWaves: 1
+  numOfEnemies: 1
