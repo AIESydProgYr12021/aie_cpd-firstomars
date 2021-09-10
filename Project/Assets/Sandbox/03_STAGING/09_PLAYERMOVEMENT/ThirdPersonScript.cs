@@ -11,6 +11,12 @@ namespace SandBox.Staging.PlayerMovement
         [SerializeField] float speed = 6f;
         [SerializeField] float rotateSpeed = 0.5f;
         [SerializeField] float rotationSpeedMax = 0.3f;
+        private float gravity = 9.8f;
+        private float vertSpeed = 0;
+
+
+        [SerializeField] GameObject joystick;
+        private VirtualJoystickController_V2 joystickController;
 
         // Update is called once per frame
         void Update()
@@ -26,10 +32,17 @@ namespace SandBox.Staging.PlayerMovement
                 if (rotation.y < -rotationSpeedMax) rotation.y = -rotationSpeedMax;
 
                 transform.Rotate(rotation);
-
                 Vector3 movement = transform.rotation * direction;
+
+                //apply gravity
+                movement.y = vertSpeed;
+
                 controller.Move(movement * speed * Time.deltaTime);
             }
+
+            //calculate gravity
+            if (controller.isGrounded) vertSpeed = 0;
+            vertSpeed -= gravity * Time.deltaTime;
         }
     }
 }
