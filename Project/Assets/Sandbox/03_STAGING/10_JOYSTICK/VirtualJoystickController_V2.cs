@@ -66,6 +66,7 @@ namespace SandBox.Staging.PlayerMovement
             Vector2 pivot = container.rectTransform.pivot;
             pos.x += pivot.x - 0.5f;
             pos.y += pivot.y - 0.5f;
+
             pos.x = Mathf.Clamp(pos.x, -1, 1);
             pos.y = Mathf.Clamp(pos.y, -1, 1);
 

@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace Temp.PlayGame
-{
+//namespace SandBox.Staging.EnemyWaves
+//{
     public class GameManager : MonoBehaviour
     {
-        //[SerializeField] GameObject promptMenu;
-
         [SerializeField] float splashScreenLoad = 2.0f;
+
+        [Header("UI")]
+        [SerializeField] GameObject promptCanvas;
+        public GameObject losePrompt;
+        public GameObject winPrompt;
 
         private void Start()
         {
-
+            promptCanvas.SetActive(true);
+            losePrompt.SetActive(false);
+            winPrompt.SetActive(false);
         }
 
         private void Update()
@@ -31,16 +37,20 @@ namespace Temp.PlayGame
             if (Input.GetKeyDown("m"))
             {
                 SceneManager.LoadScene(1);
-                //promptMenu.SetActive(true);
             }
 
-            //if( Input.GetKeyDown("M") &&
-            //    SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(0) &&
-            //    SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(1))
-            //{
-            //    SceneManager.LoadScene(1);
-            //    //promptMenu.SetActive(true);
-            //}
+        }
+
+        public void LosePrompt()
+        {
+            promptCanvas.SetActive(true);
+            losePrompt.SetActive(true);
+        }
+
+        public void WinPrompt()
+        {
+            //promptCanvas.SetActive(true);
+            winPrompt.SetActive(true);
         }
 
         public void SplashScene()
@@ -85,15 +95,10 @@ namespace Temp.PlayGame
             SceneManager.LoadScene(6);
         }
 
-        public void EnemyWaveStaging()
-        {
-            Debug.Log("EnemyWave Staging scene loaded.");
-            SceneManager.LoadScene(7);
-        }
-
         public void Quit()
         {
             Application.Quit();
         }
     }
-}
+
+//}

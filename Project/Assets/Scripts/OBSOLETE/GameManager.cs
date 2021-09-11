@@ -1,25 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-//namespace SandBox.Staging.EnemyWaves
-//{
+namespace Temp.PlayGame
+{
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] float splashScreenLoad = 2.0f;
+        //[SerializeField] GameObject promptMenu;
 
-        [Header("UI")]
-        [SerializeField] GameObject promptCanvas;
-        public GameObject losePrompt;
-        public GameObject winPrompt;
+        [SerializeField] float splashScreenLoad = 2.0f;
 
         private void Start()
         {
-            promptCanvas.SetActive(true);
-            losePrompt.SetActive(false);
-            winPrompt.SetActive(false);
+
         }
 
         private void Update()
@@ -37,20 +31,16 @@ using UnityEngine.SceneManagement;
             if (Input.GetKeyDown("m"))
             {
                 SceneManager.LoadScene(1);
+                //promptMenu.SetActive(true);
             }
 
-        }
-
-        public void LosePrompt()
-        {
-            promptCanvas.SetActive(true);
-            losePrompt.SetActive(true);
-        }
-
-        public void WinPrompt()
-        {
-            //promptCanvas.SetActive(true);
-            winPrompt.SetActive(true);
+            //if( Input.GetKeyDown("M") &&
+            //    SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(0) &&
+            //    SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(1))
+            //{
+            //    SceneManager.LoadScene(1);
+            //    //promptMenu.SetActive(true);
+            //}
         }
 
         public void SplashScene()
@@ -95,10 +85,15 @@ using UnityEngine.SceneManagement;
             SceneManager.LoadScene(6);
         }
 
+        public void EnemyWaveStaging()
+        {
+            Debug.Log("EnemyWave Staging scene loaded.");
+            SceneManager.LoadScene(7);
+        }
+
         public void Quit()
         {
             Application.Quit();
         }
     }
-
-//}
+}
