@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//OBSOLETE
 namespace Temp.PlayGame
 {
     public class GameManager : MonoBehaviour
