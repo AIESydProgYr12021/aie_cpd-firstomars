@@ -4,10 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace SandBox.Staging.PlayerShoot
+namespace SandBox.Staging.Ammo
 {
     public class SpawnProjectiles : MonoBehaviour
     {
+        //===NEW
+        [SerializeField] Text ammoText;
+        [SerializeField] int maxAmmo = 10;
+        private int currentAmmo;
+
+
+
+        //===
+        
         public GameObject firePoint;
         public List<GameObject> vfx = new List<GameObject>();
 
@@ -29,6 +38,10 @@ namespace SandBox.Staging.PlayerShoot
         // Start is called before the first frame update
         void Start()
         {
+            //NEW
+            currentAmmo = maxAmmo;
+            //===
+
             effectToSpawn = vfx[0];
 
             shootBtnImg = shootBtn.image;
@@ -38,6 +51,8 @@ namespace SandBox.Staging.PlayerShoot
         // Update is called once per frame
         void Update()
         {
+            ammoText.text = currentAmmo.ToString();
+            
             if (showControl != isControllsShowing)
             {
                 shootBtnImg.enabled = showControl;
@@ -53,8 +68,9 @@ namespace SandBox.Staging.PlayerShoot
 
         public void ShootGun()
         {
-            if (Time.time >= timeToFire)
+            if (Time.time >= timeToFire && currentAmmo > 0)
             {
+                currentAmmo--; //NEW
                 timeToFire = Time.time + 1 / effectToSpawn.GetComponent<ProjectileMove>().fireRate;
                 SpawnVFX();
             }
@@ -78,8 +94,12 @@ namespace SandBox.Staging.PlayerShoot
         private Quaternion GetPlayerRotation()
         {
             playerMoveDir = GetComponentInParent<ThirdPersonScript>().PlayerMoveDirection;
-
             return testplayerMoveDir = GetComponentInParent<Transform>().rotation;
+        }
+
+        public void IncreaseAmmo(int ammoAmt)
+        {
+            currentAmmo += ammoAmt;
         }
     }
 }

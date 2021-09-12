@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SandBox.Staging.PlayerShoot
+namespace SandBox.Staging.Ammo
 {
     public class ProjectileMove : MonoBehaviour
     {
         public float speed;
         public float fireRate;
-        public GameObject muzzlePrefab;
-        public GameObject hitPrefab;
+        [SerializeField] GameObject muzzlePrefab;
+        [SerializeField] GameObject hitPrefab;
 
         private Rigidbody rb;
 

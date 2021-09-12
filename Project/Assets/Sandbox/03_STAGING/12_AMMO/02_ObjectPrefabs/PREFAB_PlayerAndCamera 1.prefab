@@ -623,7 +623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2898814764156514359}
   m_Layer: 0
-  m_Name: PREFAB_PlayerAndCamera
+  m_Name: PREFAB_PlayerAndCamera 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

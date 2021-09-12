@@ -23,6 +23,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField] GameObject healthBarUI;
     [SerializeField] Slider healthSlider;
     [SerializeField] float maxVelocityWhenShot;
+    //ammo
+    [SerializeField] private GameObject ammoPrefab;
+    [SerializeField] private int ammoSpawnAtBulletCount;
+    private ThirdPersonScript playerController;
 
     //animation
     [Header("Animation")]
@@ -53,6 +57,7 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         GameObject player = PlayerManager.instance.player;
+        playerController = player.GetComponent<ThirdPersonScript>();
 
         playerTransform = player.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
@@ -115,8 +120,12 @@ public class EnemyController : MonoBehaviour
 
         if (health <= 0)
         {
+            if(playerController.GetAmmoAmount() < ammoSpawnAtBulletCount)
+            {
+                Vector3 ammoSpawnPos = new Vector3(transform.position.x, 1.2f, transform.position.z);
+                Instantiate(ammoPrefab, ammoSpawnPos, Quaternion.identity);
+            }
             Destroy(gameObject);
-            //waveSpawner.EnemyKilled();
         }
     }
 
@@ -130,8 +139,6 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.name == "PREFAB_Projectile(Clone)")
         {
-            //Debug.Log("bullet hit enemy");
-
             //reduce enemy health when hit by bullet
             health -= 10;
 

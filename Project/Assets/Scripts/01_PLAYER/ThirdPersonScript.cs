@@ -11,6 +11,7 @@ public class ThirdPersonScript : MonoBehaviour
     private GameManager gameManagerController;
     [SerializeField] private GameObject joystick;
     private VirtualJoystick joystickController;
+    private SpawnProjectiles spawnProjs;
 
     [Header("Player Health")]
     [SerializeField] float maxPlayerHealth;
@@ -32,6 +33,7 @@ public class ThirdPersonScript : MonoBehaviour
     {
         gameManagerController = gameManager.GetComponent<GameManager>();
         joystickController = joystick.GetComponent<VirtualJoystick>();
+        spawnProjs = GetComponentInChildren<SpawnProjectiles>();
         playerHealth = maxPlayerHealth;
         healthSlider.value = CalculateHealth();
     }
@@ -82,6 +84,16 @@ public class ThirdPersonScript : MonoBehaviour
     {
         playerHealth -= attackDamage;
         healthSlider.value = CalculateHealth();
+    }
+
+    public void AmmoPickUp(int ammoAmt)
+    {
+        spawnProjs.IncreaseAmmo(ammoAmt);
+    }
+
+    public int GetAmmoAmount()
+    {
+        return spawnProjs.CurrentAmmo;
     }
 
 }
