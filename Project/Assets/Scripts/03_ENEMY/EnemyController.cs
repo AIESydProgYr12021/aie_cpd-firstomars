@@ -38,12 +38,14 @@ public class EnemyController : MonoBehaviour
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
+    [SerializeField] private float walkSpeed;
 
     //chase
     [Header("Chase")]
     [SerializeField] Transform rayStart;
     private Transform rayEnd;
     Vector3 chasePoint;
+    [SerializeField] private float chaseSpeed;
 
     //attacking
     [Header("Attack")]
@@ -163,6 +165,8 @@ public class EnemyController : MonoBehaviour
         if (walkPointSet)
             agent.SetDestination(walkPoint);
 
+        agent.speed = walkSpeed;
+
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         //walkpoint reached?
@@ -193,6 +197,7 @@ public class EnemyController : MonoBehaviour
         anim.SetBool("isAttacking", false);
 
         chasePoint = playerTransform.position;
+        agent.speed = chaseSpeed;
         agent.SetDestination(chasePoint);
     }
 

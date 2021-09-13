@@ -17,15 +17,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/05_GameOver.unity
     guid: 358bbd13cf337e94dbfd1e8778ef5019
+  - enabled: 1
+    path: Assets/Scenes/04_PlayGame.unity
+    guid: c3b6fca8745c1d540bcb446678e58810
   - enabled: 0
     path: Assets/Sandbox/03_STAGING/05_PLAYER_ENEMY/PlayerEnemyStaging.unity
     guid: 059e9eb38f5be5848a997667778e36b1
   - enabled: 0
     path: Assets/Sandbox/03_STAGING/06_ENEMYWAVES/EnemyWavesStaging.unity
     guid: a99109b7077af8d4d8ef049a6dbbc512
-  - enabled: 0
-    path: Assets/Scenes/04_PlayGame.unity
-    guid: c3b6fca8745c1d540bcb446678e58810
   - enabled: 0
     path: Assets/Scenes/03_Staging.unity
     guid: e912b9d70c05c78459a0e6babf37e54a
