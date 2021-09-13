@@ -23,10 +23,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] GameObject healthBarUI;
     [SerializeField] Slider healthSlider;
     [SerializeField] float maxVelocityWhenShot;
-    //ammo
-    [SerializeField] private GameObject ammoPrefab;
-    [SerializeField] private int ammoSpawnAtBulletCount;
-    private ThirdPersonScript playerController;
+    private ThirdPersonScript playerController; // to access ammo
 
     //animation
     [Header("Animation")]
@@ -122,11 +119,8 @@ public class EnemyController : MonoBehaviour
 
         if (health <= 0)
         {
-            if(playerController.GetAmmoAmount() < ammoSpawnAtBulletCount)
-            {
-                Vector3 ammoSpawnPos = new Vector3(transform.position.x, 1.2f, transform.position.z);
-                Instantiate(ammoPrefab, ammoSpawnPos, Quaternion.identity);
-            }
+            Vector3 spawnAmmoPos = new Vector3(transform.position.x, 1.2f, transform.position.z);
+            playerController.SpawnAmmo(spawnAmmoPos);
             Destroy(gameObject);
         }
     }
@@ -241,10 +235,13 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
 
         //is player in sight
-        if (CanSeePlayer()) Gizmos.color = Color.red;
-        else Gizmos.color = Color.black;
-        Gizmos.DrawLine(rayStart.position, rayEnd.position);
-
+        if  (rayEnd != null)
+        {
+            if (CanSeePlayer()) Gizmos.color = Color.red;
+            else Gizmos.color = Color.black;
+            Gizmos.DrawLine(rayStart.position, rayEnd.position);
+        }
+        
         //walkpoint
         if (!CanSeePlayer() && !playerInAttackRange)
         {

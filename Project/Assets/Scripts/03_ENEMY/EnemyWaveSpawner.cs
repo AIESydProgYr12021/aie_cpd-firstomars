@@ -69,13 +69,13 @@ public class EnemyWaveSpawner : MonoBehaviour
 
     private void WaveCompleted()
     {
-        Debug.Log("Wave completed");
+        //Debug.Log("Wave completed");
         state = SpawnState.COUNTING;
 
         if (nextWave + 1 > waves.Length - 1)
         {
             //nextWave = 0;
-            Debug.Log("All waves complete");
+            //Debug.Log("All waves complete");
             wavesCompleted = true;
             gameManager.WinPrompt();
 

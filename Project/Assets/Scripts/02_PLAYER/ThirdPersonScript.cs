@@ -86,6 +86,11 @@ public class ThirdPersonScript : MonoBehaviour
         healthSlider.value = CalculateHealth();
     }
 
+    public void SpawnAmmo(Vector3 spawnPos)
+    {
+        spawnProjs.SpawnAmmo(spawnPos);
+    }
+
     public void AmmoPickUp(int ammoAmt)
     {
         spawnProjs.IncreaseAmmo(ammoAmt);

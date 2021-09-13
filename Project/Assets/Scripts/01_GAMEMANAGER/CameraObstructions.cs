@@ -5,7 +5,9 @@ using System.Linq;
 
 public class CameraObstructions : MonoBehaviour
 {
-    //GameObject player;
+    //GameObjects
+    [Range(0.0f, 1.0f)]
+    [SerializeField] private float minObstructionTransparency;
     [SerializeField] private GameObject player;
     List<GameObject> objectsObstructingView = new List<GameObject>();
     int layer_mask;
@@ -61,7 +63,7 @@ public class CameraObstructions : MonoBehaviour
             var color = material.color;
             color.a -= 0.01f;
 
-            if (color.a < 0.5f) color.a = 0.5f;
+            if (color.a < minObstructionTransparency) color.a = minObstructionTransparency;
 
             material.color = color;
         }

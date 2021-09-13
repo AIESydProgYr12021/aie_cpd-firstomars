@@ -28,7 +28,7 @@ public class Ammo : MonoBehaviour
         transform.Rotate(0, rotationSpeed, 0);
         timer -= Time.deltaTime;
 
-        if (timer <= 0) AmmoDisappears(); //Destroy(gameObject);
+        if (timer <= 0) AmmoDisappears();
 
     }
 
@@ -38,7 +38,6 @@ public class Ammo : MonoBehaviour
         {
             playerController.AmmoPickUp(ammoAmount);
             AmmoDisappears();
-            //Destroy(gameObject);
         }
     }
 

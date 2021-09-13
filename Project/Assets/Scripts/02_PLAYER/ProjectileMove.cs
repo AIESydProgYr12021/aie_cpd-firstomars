@@ -39,6 +39,8 @@ public class ProjectileMove : MonoBehaviour
     {
         rb.MovePosition(transform.position + transform.forward * speed * Time.deltaTime);
 
+
+        //AddForce code instead
         //if (speed != 0)
         //{
         //    //rb.AddForce(transform.forward * speed, ForceMode.Impulse);
@@ -54,7 +56,7 @@ public class ProjectileMove : MonoBehaviour
     {
         if (collision.gameObject.tag != "Weapon")
         {
-            Debug.Log("Bullet hits " + collision.gameObject.name + " at " + collision.GetContact(0).point);
+            //Debug.Log("Bullet hits " + collision.gameObject.name + " at " + collision.GetContact(0).point);
                 
             speed = 0;
 

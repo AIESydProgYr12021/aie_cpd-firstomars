@@ -10,6 +10,8 @@ public class SpawnProjectiles : MonoBehaviour
     [SerializeField] private GameObject ammoPrefab;
     [SerializeField] private Transform ammoSpawnPoint;
     [SerializeField] private int maxAmmoSpawn = 1;
+    [Range(0, 20)]
+    [SerializeField] private int spawnAtMinAmmoAmount;
     private int ammoSpawnCounter = 0;
     [SerializeField] private TMP_Text ammoTxt;
     [SerializeField] private TMP_Text maxAmmoTxt;
@@ -50,11 +52,7 @@ public class SpawnProjectiles : MonoBehaviour
         ammoTxt.text = CurrentAmmo.ToString();
         maxAmmoTxt.text = "/" + maxAmmo.ToString();
 
-        if (CurrentAmmo == 0 && ammoSpawnCounter < maxAmmoSpawn)
-        {
-            ammoSpawnCounter++;
-            Instantiate(ammoPrefab, ammoSpawnPoint.position, Quaternion.identity);
-        }
+        if (CurrentAmmo < 1) SpawnAmmo(ammoSpawnPoint.position);
 
         if (showControl != isControllsShowing)
         {
@@ -63,10 +61,24 @@ public class SpawnProjectiles : MonoBehaviour
             isControllsShowing = showControl;
         }
 
-        if (syncWithKeyboardInput && Input.GetKeyDown(KeyCode.Space))
+        if (syncWithKeyboardInput && Input.GetKeyDown(KeyCode.Space)) ShootGun();
+    }
+
+    public void SpawnAmmo(Vector3 spawnPos)
+    {
+        if (ammoSpawnCounter < maxAmmoSpawn && CurrentAmmo < spawnAtMinAmmoAmount)
         {
-            ShootGun();
+            ammoSpawnCounter++;
+            Instantiate(ammoPrefab, spawnPos, Quaternion.identity);
+            //Debug.Log("Increased ammo spawn counter " + ammoSpawnCounter);
         }
+    }
+
+    public void DecreaseAmmoSpawnCounter()
+    {
+        ammoSpawnCounter--;
+        if (ammoSpawnCounter < 0) ammoSpawnCounter = 0;
+        //Debug.Log("Decreased ammo spawn counter " + ammoSpawnCounter);
     }
 
     public void ShootGun()
@@ -108,11 +120,7 @@ public class SpawnProjectiles : MonoBehaviour
         CurrentAmmo += ammoAmt;
     }
 
-    public void DecreaseAmmoSpawnCounter()
-    {
-        ammoSpawnCounter--;
-        if (ammoSpawnCounter < 0) ammoSpawnCounter = 0;
-    }
+
 
 }
 
