@@ -56,14 +56,17 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         GameObject player = PlayerManager.instance.player;
-        playerController = player.GetComponent<ThirdPersonScript>();
 
-        playerTransform = player.GetComponent<Transform>();
+        if (player != null)
+        {
+            playerController = player.GetComponent<ThirdPersonScript>();
+            playerTransform = player.GetComponent<Transform>();
+            rayEnd = player.transform.Find("RayEnd").GetComponent<Transform>();
+        }
+
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
-
-        rayEnd = player.transform.Find("RayEnd").GetComponent<Transform>();
 
         //health
         health = maxHealth;

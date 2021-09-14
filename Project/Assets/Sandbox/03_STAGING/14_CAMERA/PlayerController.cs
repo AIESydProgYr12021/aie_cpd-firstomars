@@ -20,8 +20,6 @@ namespace Sandbox.Staging.Camera
 
             Vector3 movement = transform.rotation * direction;
             cc.Move(movement * 10f * Time.deltaTime);
-            
-
         }
     }
 }

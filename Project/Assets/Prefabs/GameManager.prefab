@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4934820105687027436
+--- !u!1 &108723758236540387
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,232 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4934820105687027443}
-  - component: {fileID: 4934820105687027442}
+  - component: {fileID: 108723758236540388}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: WaveSpawner_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4934820105687027443
+--- !u!4 &108723758236540388
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934820105687027436}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 108723758236540387}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10, y: 0, z: 20.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+  m_Father: {fileID: 5043542382851862292}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &108723758655780235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 108723758655780236}
+  m_Layer: 0
+  m_Name: WaveSpawner_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &108723758655780236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108723758655780235}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 24, y: 0, z: 0.64}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5043542382851862292}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &108723759502264012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 108723759502264013}
+  m_Layer: 0
+  m_Name: WaveSpawner_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &108723759502264013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108723759502264012}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -16.95, y: 0, z: -13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5043542382851862292}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5043542382851862283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5043542382851862292}
+  - component: {fileID: 4312971621716581591}
+  - component: {fileID: 5043542382851862280}
+  - component: {fileID: 5043542382851862285}
+  m_Layer: 0
+  m_Name: GAMEMANAGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5043542382851862292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5043542382851862283}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 108723758655780236}
+  - {fileID: 108723758236540388}
+  - {fileID: 108723759502264013}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4934820105687027442
+--- !u!114 &4312971621716581591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934820105687027436}
+  m_GameObject: {fileID: 5043542382851862283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1629b51c84d0f9c4aa22b3ac0e4ef184, type: 3}
+  m_Script: {fileID: 11500000, guid: 436adc0def6193f49b518eac6392239a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splashScreenLoad: 2
+  promptCanvas: {fileID: 0}
+  losePrompt: {fileID: 0}
+  winPrompt: {fileID: 0}
+--- !u!114 &5043542382851862280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5043542382851862283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4395b389baa998346829b28cecf8fe9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+--- !u!114 &5043542382851862285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5043542382851862283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d48ae0269f36a429a458a3b9eae111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countDown: {fileID: 0}
+  waves:
+  - waveName: Wave 1
+    enemies:
+    - enemyName: Cowboys1
+      enemy: {fileID: 2768846599086475769, guid: a9251d4fb41a56d40ac7190f020d5ac5, type: 3}
+      spawnLocations:
+      - {fileID: 108723758655780236}
+      count: 3
+      rate: 2
+  - waveName: Wave 2
+    enemies:
+    - enemyName: Cowboys2
+      enemy: {fileID: 2768846599086475769, guid: a9251d4fb41a56d40ac7190f020d5ac5, type: 3}
+      spawnLocations:
+      - {fileID: 108723758655780236}
+      - {fileID: 108723758236540388}
+      count: 4
+      rate: 2
+    - enemyName: Cowboys3
+      enemy: {fileID: 2768846599086475769, guid: a9251d4fb41a56d40ac7190f020d5ac5, type: 3}
+      spawnLocations:
+      - {fileID: 108723759502264013}
+      count: 3
+      rate: 3
+  - waveName: Wave 3
+    enemies:
+    - enemyName: Cowboys4
+      enemy: {fileID: 2768846599086475769, guid: a9251d4fb41a56d40ac7190f020d5ac5, type: 3}
+      spawnLocations:
+      - {fileID: 108723758655780236}
+      - {fileID: 108723758236540388}
+      - {fileID: 108723759502264013}
+      count: 4
+      rate: 5
+    - enemyName: Cowboys5
+      enemy: {fileID: 2768846599086475769, guid: a9251d4fb41a56d40ac7190f020d5ac5, type: 3}
+      spawnLocations:
+      - {fileID: 108723758236540388}
+      count: 3
+      rate: 1
+  - waveName: Wave 4
+    enemies:
+    - enemyName: Cowboys6
+      enemy: {fileID: 2768846599086475769, guid: a9251d4fb41a56d40ac7190f020d5ac5, type: 3}
+      spawnLocations:
+      - {fileID: 108723758236540388}
+      count: 5
+      rate: 1
+    - enemyName: Cowboys7
+      enemy: {fileID: 2768846599086475769, guid: a9251d4fb41a56d40ac7190f020d5ac5, type: 3}
+      spawnLocations:
+      - {fileID: 108723758236540388}
+      count: 6
+      rate: 1
+    - enemyName: Cowboys8
+      enemy: {fileID: 2768846599086475769, guid: a9251d4fb41a56d40ac7190f020d5ac5, type: 3}
+      spawnLocations:
+      - {fileID: 108723758236540388}
+      count: 7
+      rate: 1
+  - waveName: Wave 5
+    enemies:
+    - enemyName: Cowboys9
+      enemy: {fileID: 2768846599086475769, guid: a9251d4fb41a56d40ac7190f020d5ac5, type: 3}
+      spawnLocations:
+      - {fileID: 108723758236540388}
+      count: 20
+      rate: 1
+  state: 2
