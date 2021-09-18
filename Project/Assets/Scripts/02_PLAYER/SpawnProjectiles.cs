@@ -61,7 +61,10 @@ public class SpawnProjectiles : MonoBehaviour
             isControllsShowing = showControl;
         }
 
-        if (syncWithKeyboardInput && Input.GetKeyDown(KeyCode.Space)) ShootGun();
+
+        if (syncWithKeyboardInput && Input.GetButtonDown("Fire1")) ShootGun();
+
+        //if (syncWithKeyboardInput && Input.GetKeyDown(KeyCode.Space)) ShootGun();
     }
 
     public void SpawnAmmo(Vector3 spawnPos)

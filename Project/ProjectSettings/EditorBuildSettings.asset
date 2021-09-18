@@ -17,10 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/05_GameOver.unity
     guid: 358bbd13cf337e94dbfd1e8778ef5019
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/04_PlayGame.unity
     guid: c3b6fca8745c1d540bcb446678e58810
-  - enabled: 1
+  - enabled: 0
     path: Assets/Sandbox/03_STAGING/13_INTROAMMO/IntroAmmoStaging.unity
     guid: cce4aba8c3366e24a84afeb77b125b50
   - enabled: 0
