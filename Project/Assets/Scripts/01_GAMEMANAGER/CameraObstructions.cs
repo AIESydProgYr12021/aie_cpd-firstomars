@@ -5,9 +5,13 @@ using System.Linq;
 
 public class CameraObstructions : MonoBehaviour
 {
-    //GameObjects
+    //transparency settings
     [Range(0.0f, 1.0f)]
     [SerializeField] private float minObstructionTransparency;
+    [Range(0.01f, 0.15f)]
+    [SerializeField] private float transparencySpeed;
+
+    //GameObject
     [SerializeField] private GameObject player;
     List<GameObject> objectsObstructingView = new List<GameObject>();
     int layer_mask;
@@ -46,10 +50,12 @@ public class CameraObstructions : MonoBehaviour
         {
             var material = objNotInView.GetComponent<Renderer>().material;
 
+            //Debug.Log(objNotInView.name + " made opaque");
+
             ChangeRenderingModeToOpaque(material);
 
             var color = material.color;
-            color.a += 0.01f;
+            color.a += transparencySpeed;
             material.color = color;
         }
 
@@ -58,10 +64,12 @@ public class CameraObstructions : MonoBehaviour
         {
             var material = objInView.GetComponent<Renderer>().material;
 
+            //Debug.Log(objInView.name + " made transparent");
+
             ChangeRenderingModeToTransparent(material);
 
             var color = material.color;
-            color.a -= 0.01f;
+            color.a -= transparencySpeed;
 
             if (color.a < minObstructionTransparency) color.a = minObstructionTransparency;
 
@@ -84,6 +92,8 @@ public class CameraObstructions : MonoBehaviour
         material.DisableKeyword("_ALPHABLEND_ON");
         material.EnableKeyword("_ALPHAPREMULTIPLY_ON");
         material.renderQueue = -1;
+
+        
     }
 
     private static void ChangeRenderingModeToTransparent(Material material)

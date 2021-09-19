@@ -12,12 +12,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject promptCanvas;
     public GameObject losePrompt;
     public GameObject winPrompt;
+    [SerializeField] private GameObject menuPrompt;
+
+    PlayerManager playerMngr;
 
     private void Start()
     {
+        playerMngr = PlayerManager.instance;
+
         promptCanvas.SetActive(true);
         losePrompt.SetActive(false);
         winPrompt.SetActive(false);
+        menuPrompt.SetActive(false);
     }
 
     private void Update()
@@ -34,21 +40,34 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown("m"))
         {
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
+            MenuPrompt();
         }
 
     }
 
     public void LosePrompt()
     {
-        promptCanvas.SetActive(true);
         losePrompt.SetActive(true);
     }
 
     public void WinPrompt()
     {
-        //promptCanvas.SetActive(true);
         winPrompt.SetActive(true);
+    }
+
+    public void MenuPrompt()
+    {
+        if (menuPrompt.activeSelf == true)
+        {
+            menuPrompt.SetActive(false);
+            playerMngr.isGamePaused = false;
+        }
+        else
+        {
+            menuPrompt.SetActive(true);
+            playerMngr.isGamePaused = true;
+        }
     }
 
     public void SplashScene()

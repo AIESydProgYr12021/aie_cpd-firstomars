@@ -10,7 +10,8 @@ public class EnemyAnimation : MonoBehaviour
     private void Start()
     {
         GameObject player = PlayerManager.instance.player;
-        playerController = player.GetComponent<ThirdPersonScript>();
+
+        if (player != null) playerController = player.GetComponent<ThirdPersonScript>();
         attackDamage = GetComponentInParent<EnemyController>().attackDamage;
     }
 

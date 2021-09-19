@@ -42,12 +42,14 @@ public class EnemyWaveSpawner : MonoBehaviour
     [SerializeField] SpawnState state = SpawnState.COUNTING;
 
     private GameManager gameManager;
+    private HealthPackSpawner healthSpawner;
     private bool wavesCompleted = false;
 
 
     private void Start()
     {
         gameManager = GetComponentInParent<GameManager>();
+        healthSpawner = gameManager.GetComponentInChildren<HealthPackSpawner>();
         countDownController = countDown.GetComponent<CoundownController>();
         StartCoroutine(StartNextCountdown());
     }
@@ -89,6 +91,7 @@ public class EnemyWaveSpawner : MonoBehaviour
 
     IEnumerator StartNextCountdown()
     {
+        healthSpawner.SpawnHealth();
         countDownController.SetWaveIndex(nextWave);
 
         yield return new WaitForSeconds(3f);

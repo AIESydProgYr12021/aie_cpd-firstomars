@@ -17,5 +17,32 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     public GameObject player;
+
+    public bool isGamePaused = false;
+
+    private void Update()
+    {
+        if (isGamePaused) Pause();
+        else Resume();
+    }
+
+    private void Pause()
+    {
+        Time.timeScale = 0f;
+    }
+
+    private void Resume()
+    {
+        Time.timeScale = 1f;
+    }
+
+    
+
+    //public void OnApplicationPause(bool pause)
+    //{
+    //    if (pause) Time.timeScale = 0f;
+    //    else Time.timeScale = 1f;
+    //}
+
 }
 

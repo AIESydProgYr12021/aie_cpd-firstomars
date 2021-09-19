@@ -80,6 +80,14 @@ public class ThirdPersonScript : MonoBehaviour
         return playerHealth / maxPlayerHealth;
     }
 
+    public void HealthPackReceived(float healAmount)
+    {
+        Debug.Log("Health pack received " + healAmount);
+        if (playerHealth + healAmount > maxPlayerHealth) playerHealth = maxPlayerHealth;
+        else playerHealth += healAmount;
+        healthSlider.value = CalculateHealth();
+    }
+
     public void AttackedByEnemy(int attackDamage)
     {
         playerHealth -= attackDamage;
