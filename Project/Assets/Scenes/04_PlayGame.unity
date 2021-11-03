@@ -1055,6 +1055,7 @@ MonoBehaviour:
   promptCanvas: {fileID: 4386009154215000610}
   losePrompt: {fileID: 4386009153496969439}
   winPrompt: {fileID: 4386009153465797830}
+  menuPrompt: {fileID: 0}
 --- !u!4 &785717048356987201
 Transform:
   m_ObjectHideFlags: 0
@@ -6348,6 +6349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minObstructionTransparency: 0.15
+  transparencySpeed: 0
   player: {fileID: 0}
 --- !u!1 &7522831687061758986
 GameObject:
@@ -10982,6 +10984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7522831687061758986}
+  isGamePaused: 0
 --- !u!1 &8692576938425003974
 GameObject:
   m_ObjectHideFlags: 0
